@@ -51,7 +51,9 @@ const Login = ({ setIsLoggedIn }: Props) => {
     <div className="flex items-center justify-center flex-col min-h-screen px-8 md:px-16">
       <h1 className="text-3xl font-semibold mb-8">
         Login to{" "}
-        <span className="bg-[#581c87] px-2 italic text-white">Admin Panel</span>{" "}
+        <span className="bg-[#581c87] px-2 italic text-white">
+          Admin Panel!
+        </span>{" "}
       </h1>
       <div className="w-full max-w-[500px]">
         <Form {...form}>

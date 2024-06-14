@@ -1,6 +1,21 @@
-import React from "react";
+"use client";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 
 const page = () => {
+  const [jobs, setJobs] = useState([]);
+  const fetchJobs = async () => {
+    try {
+      const response = await axios.get("/api/job");
+      setJobs(response.data.jobs);
+    } catch (error) {
+      toast.error("Failed to fetch jobs");
+    }
+  };
+  useEffect(() => {
+    fetchJobs();
+  }, []);
   return (
     <div className="p-10 bg-gray-50 h-[80vh]">
       <h1 className="text-4xl font-extrabold text-gray-700 tracking-wider mb-12 text-center">
@@ -14,7 +29,9 @@ const page = () => {
                 <h1 className="text-2xl font-semibold text-gray-700 mb-4">
                   Total Jobs
                 </h1>
-                <h1 className="text-5xl font-bold text-gray-900">100</h1>
+                <h1 className="text-5xl font-bold text-gray-900">
+                  {jobs.length}
+                </h1>
               </div>
               <div className="text-purple-600">
                 <svg
@@ -40,7 +57,11 @@ const page = () => {
                 <h1 className="text-2xl font-semibold text-gray-700 mb-4">
                   Total Candidates
                 </h1>
-                <h1 className="text-5xl font-bold text-gray-900">100</h1>
+                <h1 className="text-5xl font-bold text-gray-900">
+                  {jobs
+                    .map((job: any) => job.candidates.length)
+                    .reduce((a, b) => a + b, 0)}
+                </h1>
               </div>
               <div className="text-green-600">
                 <svg
