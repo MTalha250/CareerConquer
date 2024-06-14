@@ -42,7 +42,7 @@ const page = () => {
         }}
       />
       <h1 className=" text-2xl font-bold text-gray-800 tracking-wide mt-10">
-        Showing results for "{query.toString().split("%20").join(" ")}"
+        Showing results for "{decodeURIComponent(query.toString())}"
       </h1>
       {jobs.length > 0 ? (
         <div className="flex mt-10 gap-8">

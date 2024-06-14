@@ -13,7 +13,7 @@ interface JobCardProps {
 }
 const JobCard = (props: JobCardProps) => {
   return (
-    <div className="rounded overflow-hidden shadow-lg bg-white p-6 border hover:scale-[1.03] transition duration-200 ease-in-out">
+    <div className="rounded-lg overflow-hidden shadow-lg bg-white p-6 border hover:scale-[1.03] transition duration-200 ease-in-out">
       <div className="font-bold text-xl mb-2">{props.job.title}</div>
       <p
         className="text-gray-700 text-base mb-4 line-clamp-3"

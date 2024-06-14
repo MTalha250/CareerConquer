@@ -63,6 +63,12 @@ const Details = (props: DetailsProps) => {
       toast.success("Application submitted successfully");
     } catch (error) {
       toast.error("Failed to submit application");
+    } finally {
+      setName("");
+      setEmail("");
+      setPhone("");
+      setNationality("");
+      setEducation("");
     }
   };
   return (

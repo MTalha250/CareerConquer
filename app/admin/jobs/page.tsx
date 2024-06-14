@@ -1,11 +1,10 @@
 "use client";
-import React, { use, useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   Table,
   TableBody,
   TableCaption,
   TableCell,
-  TableFooter,
   TableHead,
   TableHeader,
   TableRow,
@@ -38,6 +37,7 @@ const page = () => {
   const [phone, setPhone] = useState("");
   const [search, setSearch] = useState("");
   const [jobs, setJobs] = useState([]);
+  const editor = useRef(null);
 
   const fetchJobs = async () => {
     try {
@@ -108,26 +108,13 @@ const page = () => {
                 onChange={(e) => setTitle(e.target.value)}
               />
               <Editor
+                ref={editor}
                 apiKey="g0zqs3p6v9zx7zhnrzgdphkxjcz3dvgt6kl7bxln19etxto6"
-                init={{
-                  plugins:
-                    "anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage advtemplate ai mentions tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss markdown",
-                  toolbar:
-                    "undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat",
-                  tinycomments_mode: "embedded",
-                  tinycomments_author: "Author name",
-                  mergetags_list: [
-                    { value: "First.Name", title: "First Name" },
-                    { value: "Email", title: "Email" },
-                  ],
-                  ai_request: (request: any, respondWith: any) =>
-                    respondWith.string(() =>
-                      Promise.reject("See docs to implement AI Assistant")
-                    ),
-                }}
                 initialValue="Description"
                 onEditorChange={(content, editor) => setDescription(content)}
+                tabIndex={10}
               />
+
               <Select value={state} onValueChange={(e) => setState(e)}>
                 <SelectTrigger>
                   <SelectValue placeholder="State" />
