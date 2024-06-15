@@ -6,6 +6,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Typewriter from "typewriter-effect";
 import { useRouter } from "next/navigation";
+import JobCardMobile from "@/components/JobCardMobile";
 
 const page = () => {
   const [jobs, setJobs] = useState([]);
@@ -25,8 +26,8 @@ const page = () => {
     fetchJobs();
   }, []);
   return (
-    <div className="pt-32 px-16 mb-10">
-      <h1 className="text-center font-bold text-4xl mb-10 bg-gradient-to-r from-indigo-900 via-purple-900 to-black text-white py-6 rounded-lg shadow-xl transform hover:scale-105 transition-transform duration-300 ease-in-out">
+    <div className="pt-32 px-8 md:px-16 mb-10">
+      <h1 className="text-center font-bold text-xl sm:text-2xl md:text-3xl lg:text-4xl mb-5 md:mb-10 bg-gradient-to-r from-indigo-900 via-purple-900 to-black text-white py-6 rounded-lg shadow-xl transform hover:scale-105 transition-transform duration-300 ease-in-out">
         <Typewriter
           options={{
             strings: [
@@ -40,7 +41,7 @@ const page = () => {
           }}
         />
       </h1>
-      <h1 className="text-2xl font-bold text-gray-800 tracking-wide mb-5">
+      <h1 className="text-xl sm:text-2xl font-bold text-gray-800 tracking-wide mb-3 sm:mb-5">
         Search for Jobs
       </h1>
       <Input
@@ -57,24 +58,28 @@ const page = () => {
           router.push(`/search/${search}`);
         }}
       />
-      <h1 className=" text-2xl font-bold text-gray-800 tracking-wide mt-10">
+      <h1 className="text-xl sm:text-2xl font-bold text-gray-800 tracking-wide mt-10">
         Job Listings
       </h1>
       {jobs.length > 0 ? (
-        <div className="flex mt-10 gap-8">
-          <div className="w-[45%] space-y-5 shrink-0">
+        <div className="flex mt-5 md:mt-10 gap-4 lg:gap-8">
+          <div className="w-full md:w-[45%] space-y-5 shrink-0">
             {jobs?.map((job: any) => (
-              <div
-                key={job._id}
-                onClick={() => setJobDetails(job)}
-                className="cursor-pointer"
-              >
-                <JobCard job={job} />
+              <div key={job._id}>
+                <div
+                  onClick={() => setJobDetails(job)}
+                  className="cursor-pointer hidden md:block"
+                >
+                  <JobCard job={job} />
+                </div>
+                <JobCardMobile job={job} />
               </div>
             ))}
           </div>
-          <div className="w-0.5 bg-neutral-300"></div>
-          <Details job={jobDetails} />
+          <div className="hidden md:block w-0.5 bg-neutral-300"></div>
+          <div className="hidden md:block w-full">
+            <Details job={jobDetails} />
+          </div>
         </div>
       ) : (
         <div className="flex justify-center items-center h-[50vh] text-center text-lg text-gray-600 tracking-wide mt-10">

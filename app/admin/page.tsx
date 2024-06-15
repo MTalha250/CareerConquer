@@ -17,11 +17,11 @@ const page = () => {
     fetchJobs();
   }, []);
   return (
-    <div className="p-10 bg-gray-50 h-[80vh]">
+    <div className="py-10 px-4 md:px-8 bg-gray-50 h-[80vh]">
       <h1 className="text-4xl font-extrabold text-gray-700 tracking-wider mb-12 text-center">
         Analytics Dashboard
       </h1>
-      <div className="container mx-auto">
+      <div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
           <div className="p-8 rounded-lg shadow-lg bg-white border-t-4 border-purple-600">
             <div className="flex items-center justify-between">

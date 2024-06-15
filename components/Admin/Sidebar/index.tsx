@@ -5,7 +5,7 @@ import { MdOutlineWork } from "react-icons/md";
 import { MdDashboard } from "react-icons/md";
 const Sidebar = () => {
   return (
-    <div className="bg-[#581C87] w-1/4 text-white p-4">
+    <div className="hidden md:block bg-[#581C87] w-1/4 text-white p-4">
       <h1 className="text-2xl font-bold pt-24">Admin Panel</h1>
       <ul className="mt-6 text-lg">
         <li className="py-2">

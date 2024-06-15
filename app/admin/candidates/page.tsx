@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/table";
 import axios from "axios";
 import { set } from "mongoose";
+import JobCardAdmin from "@/components/Admin/JobCardAdmin";
 const page = () => {
   const [jobs, setJobs] = useState([]);
   const [candidates, setCandidates] = useState([]);
@@ -30,22 +31,24 @@ const page = () => {
   }, []);
   return (
     <div className="py-10 bg-gray-50 h-[82vh] overflow-hidden">
-      <h1 className="text-4xl font-extrabold text-gray-700 tracking-wider mb-12 text-center">
+      <h1 className="text-4xl font-extrabold text-gray-700 tracking-wider mb-12 text-center px-5">
         Candidates List
       </h1>
       <div className="flex h-full justify-between">
-        <div className="w-1/3 h-full overflow-scroll space-y-5 scrollbar scrollbar-none p-5 pb-20 border-r shrink-0">
+        <div className="w-full md:w-1/3 h-full overflow-scroll space-y-5 scrollbar scrollbar-none p-5 pb-32 md:border-r shrink-0">
           {jobs.map((job: any) => (
-            <div
-              key={job._id}
-              className="cursor-pointer"
-              onClick={() => setCandidates(job.candidates)}
-            >
-              <JobCard job={job} />
+            <div key={job._id}>
+              <div
+                className="cursor-pointer hidden md:block"
+                onClick={() => setCandidates(job.candidates)}
+              >
+                <JobCard job={job} />
+              </div>
+              <JobCardAdmin job={job} />
             </div>
           ))}
         </div>
-        <div className="w-full px-5">
+        <div className="hidden md:block w-full px-5">
           <Table>
             <TableHeader>
               <TableRow>

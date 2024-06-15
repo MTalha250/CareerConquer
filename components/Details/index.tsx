@@ -72,7 +72,7 @@ const Details = (props: DetailsProps) => {
     }
   };
   return (
-    <div className="w-full mx-auto p-6 bg-white shadow-lg rounded-lg border sticky top-32 h-[80vh] overflow-scroll scrollbar scrollbar-none">
+    <div className="w-full mx-auto p-6 bg-white shadow-lg rounded-lg md:border sticky top-32 h-[80vh] overflow-scroll scrollbar scrollbar-none">
       <h1 className="text-3xl font-bold mb-4">{props.job.title}</h1>
       <p
         className="text-gray-700 mb-4"
@@ -91,9 +91,9 @@ const Details = (props: DetailsProps) => {
         <DialogTrigger className="mt-4 bg-purple-900 text-white py-2 px-4 rounded hover:bg-purple-700">
           Apply Now
         </DialogTrigger>
-        <DialogContent className="p-10">
+        <DialogContent className="p-6 md:p-10">
           <form onSubmit={addCandidate} className="flex flex-col space-y-5">
-            <p className="text-sm text-gray-600">
+            <p className="text-sm text-gray-600 w-[70%]">
               Please fill in the form below to apply for this job.
             </p>
             <Input

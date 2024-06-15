@@ -84,8 +84,8 @@ const page = () => {
     }
   };
   return (
-    <div className="p-10 bg-gray-50 h-[80vh]">
-      <h1 className="text-4xl font-extrabold text-gray-700 tracking-wider mb-5 text-center">
+    <div className="py-10 px-4 md:px-8 bg-gray-50 h-[80vh]">
+      <h1 className="text-4xl font-extrabold text-gray-700 tracking-wider mb-10 text-center">
         Jobs List
       </h1>
       <div className="flex space-x-5">
@@ -100,8 +100,11 @@ const page = () => {
           <DialogTrigger className="bg-purple-800 text-sm text-white px-4 py-2 rounded whitespace-nowrap">
             Add Job
           </DialogTrigger>
-          <DialogContent className="p-10">
-            <form onSubmit={handleSubmit} className="flex flex-col space-y-5">
+          <DialogContent className="p-10 max-h-screen overflow-scroll">
+            <form
+              onSubmit={handleSubmit}
+              className="flex flex-col space-y-3 md:space-y-5"
+            >
               <Input
                 placeholder="Job Title"
                 value={title}
